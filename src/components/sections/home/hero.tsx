@@ -164,6 +164,9 @@ export function HomeHero() {
               <Link href={homeHero.primaryCta.href}>{homeHero.primaryCta.label}</Link>
             </Button>
             <Button asChild variant="secondary" size="lg">
+              <Link href={homeHero.worldCta.href}>{homeHero.worldCta.label}</Link>
+            </Button>
+            <Button asChild variant="secondary" size="lg">
               <Link href={homeHero.secondaryCta.href}>{homeHero.secondaryCta.label}</Link>
             </Button>
             <Button asChild variant="tertiary" size="lg">

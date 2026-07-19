@@ -11,6 +11,7 @@ export const homeHero = {
   primaryCta: { label: "Explore the Rover", href: "/rover" },
   secondaryCta: { label: "Join the Team", href: "/join" },
   tertiaryCta: { label: "Sponsor Us", href: "/sponsors" },
+  worldCta: { label: "Enter Base Camp", href: "/explore" },
   scrollCue: "Scroll to explore",
   staticToggleLabel: "Static view",
   interactiveToggleLabel: "Interactive view",

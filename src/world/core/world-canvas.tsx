@@ -2,93 +2,94 @@
 
 import * as React from "react";
 import { Canvas } from "@react-three/fiber";
-import { OrbitControls, Grid, Environment } from "@react-three/drei";
+import { useTheme } from "next-themes";
 import { useReducedMotion } from "@/hooks/use-reduced-motion";
+import { useWorldStore } from "@/store/world-store";
+import { Terrain } from "@/world/environment/terrain";
+import { WorldLighting } from "@/world/environment/lighting";
+import { Buildings } from "@/world/buildings/building-mesh";
+import { RoverPlayer } from "@/world/player/rover";
+import { ChaseCamera } from "@/world/systems/chase-camera";
+import { PerformanceGuardian } from "@/world/systems/performance";
+import { attachKeyboardControls } from "@/world/systems/keyboard-controls";
+import { WorldHud } from "@/world/ui/world-hud";
+import { MobileControls } from "@/world/ui/mobile-controls";
 
 type WorldCanvasProps = {
   quality?: "full" | "lite";
 };
 
-function RoverPlaceholder() {
+function WorldScene({
+  quality,
+  darkMode,
+}: {
+  quality: "full" | "lite";
+  darkMode: boolean;
+}) {
   return (
-    <group position={[0, 0.35, 0]}>
-      <mesh castShadow receiveShadow>
-        <boxGeometry args={[1.6, 0.35, 1]} />
-        <meshStandardMaterial color="#3b82f6" metalness={0.3} roughness={0.45} />
-      </mesh>
-      <mesh position={[0, 0.35, 0]} castShadow>
-        <boxGeometry args={[0.7, 0.35, 0.7]} />
-        <meshStandardMaterial color="#0f172a" metalness={0.2} roughness={0.5} />
-      </mesh>
-      {[
-        [-0.7, -0.15, 0.45],
-        [0.7, -0.15, 0.45],
-        [-0.7, -0.15, -0.45],
-        [0.7, -0.15, -0.45],
-      ].map((pos, i) => (
-        <mesh key={i} position={pos as [number, number, number]} castShadow rotation={[0, 0, Math.PI / 2]}>
-          <cylinderGeometry args={[0.18, 0.18, 0.2, 16]} />
-          <meshStandardMaterial color="#171717" roughness={0.8} />
-        </mesh>
-      ))}
-    </group>
+    <>
+      <WorldLighting quality={quality} darkMode={darkMode} />
+      <Terrain quality={quality} />
+      <Buildings quality={quality} />
+      <RoverPlayer quality={quality} />
+      <ChaseCamera />
+      <PerformanceGuardian quality={quality} />
+    </>
   );
 }
 
 /**
- * Foundation canvas only — full Base Camp scenes land in the world milestone.
- * Physics (Rapier) and GSAP camera systems plug in here later.
+ * Base Camp world canvas — Bruno Simon–inspired drivable yard.
+ * Loaded only via /explore after capability gate. Marketing never imports this.
  */
 export function WorldCanvas({ quality = "full" }: WorldCanvasProps) {
   const reduced = useReducedMotion();
+  const setQuality = useWorldStore((s) => s.setQuality);
+  const { resolvedTheme } = useTheme();
+  const darkMode = resolvedTheme !== "light";
   const dpr: [number, number] = quality === "lite" ? [1, 1.25] : [1, 1.75];
+  const [touch, setTouch] = React.useState(false);
+
+  React.useEffect(() => {
+    setQuality(quality);
+  }, [quality, setQuality]);
+
+  React.useEffect(() => {
+    setTouch(window.matchMedia("(pointer: coarse)").matches);
+    return attachKeyboardControls();
+  }, []);
 
   return (
-    <div className="h-dvh w-full bg-neutral-950" role="img" aria-label="Interactive Base Camp preview">
+    <div className="relative h-dvh w-full overflow-hidden bg-neutral-950">
       <Canvas
         dpr={dpr}
-        shadows={quality === "full"}
-        camera={{ position: [4, 3, 5], fov: 45, near: 0.1, far: 200 }}
-        gl={{ antialias: quality === "full", powerPreference: "high-performance" }}
+        shadows={quality === "full" && !reduced}
+        camera={{ position: [0, 4.5, 10], fov: 42, near: 0.1, far: 120 }}
+        gl={{
+          antialias: quality === "full",
+          powerPreference: "high-performance",
+          stencil: false,
+          depth: true,
+        }}
         onCreated={({ gl }) => {
           gl.setClearColor("#0a0a0a");
         }}
+        aria-hidden
+        role="presentation"
       >
-        <ambientLight intensity={0.45} />
-        <directionalLight
-          castShadow={quality === "full"}
-          position={[6, 10, 4]}
-          intensity={1.2}
-          shadow-mapSize-width={quality === "full" ? 1024 : 512}
-          shadow-mapSize-height={quality === "full" ? 1024 : 512}
-        />
-        <RoverPlaceholder />
-        <Grid
-          args={[30, 30]}
-          cellSize={0.5}
-          cellThickness={0.6}
-          sectionSize={3}
-          sectionThickness={1.1}
-          sectionColor="#334155"
-          cellColor="#1e293b"
-          fadeDistance={28}
-          infiniteGrid
-        />
-        {quality === "full" ? <Environment preset="city" /> : null}
-        <OrbitControls
-          enablePan={false}
-          maxPolarAngle={Math.PI / 2.1}
-          minDistance={3}
-          maxDistance={12}
-          enableDamping
-          dampingFactor={0.08}
-          autoRotate={!reduced && quality === "full"}
-          autoRotateSpeed={0.4}
-        />
+        <React.Suspense fallback={null}>
+          <WorldScene quality={quality} darkMode={darkMode} />
+        </React.Suspense>
       </Canvas>
+
+      <WorldHud />
+      <MobileControls enabled={touch || quality === "lite"} />
+
       <p className="sr-only">
-        Decorative 3D preview of the FISAT rover on a grid. Use Exit to site for full
-        content. Keyboard users should leave this canvas and use the 2D site.
+        Interactive FISAT Base Camp. Drive the rover with WASD or the on-screen
+        joystick. Use the Destinations menu to travel without driving. Exit to
+        site returns to the full 2D website. All buildings also exist as normal
+        pages.
       </p>
     </div>
   );
