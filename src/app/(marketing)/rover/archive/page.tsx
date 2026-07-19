@@ -1,21 +1,56 @@
 import { buildMetadata } from "@/lib/seo/metadata";
-import { PagePlaceholder } from "@/components/sections/page-placeholder";
-import { placeholderRoutes } from "@/lib/routes/placeholders";
-
-const route = placeholderRoutes.archive;
+import { Container } from "@/components/ui/container";
+import { PageHero } from "@/components/sections/shared/page-hero";
+import { CtaBand } from "@/components/sections/shared/cta-band";
+import { ProjectCard } from "@/components/domain";
+import { roverGenerations } from "@/content/site-content";
 
 export const metadata = buildMetadata({
-  title: route.title,
-  description: route.description,
-  path: route.path,
+  title: "Rover Archive",
+  description: "Historical record of every rover generation — our project lineage.",
+  path: "/rover/archive",
 });
 
-export default function Page() {
+/** Projects in product language map to rover archive generations. */
+export default function ArchivePage() {
   return (
-    <PagePlaceholder
-      title={route.title}
-      description={route.description}
-      path={route.path}
-    />
+    <>
+      <PageHero
+        eyebrow="Projects · Archive"
+        title="Every generation, documented."
+        description="From foundation season to Artemis — each platform is archived with results, lessons, and subsystem lineage."
+        primaryCta={{ label: "Current rover", href: "/rover" }}
+        secondaryCta={{ label: "Achievements", href: "/achievements" }}
+      />
+
+      <section className="section-y" aria-labelledby="generations-heading">
+        <Container className="space-y-8">
+          <h2 id="generations-heading" className="sr-only">
+            Rover generations
+          </h2>
+          <ul className="card-grid">
+            {roverGenerations.map((gen) => (
+              <li key={gen.slug}>
+                <ProjectCard
+                  href={`/rover/archive/${gen.slug}`}
+                  title={`${gen.name} · ${gen.year}`}
+                  summary={gen.summary}
+                  eyebrow="Generation"
+                  resultBadge={gen.result}
+                  chips={[...gen.chips]}
+                />
+              </li>
+            ))}
+          </ul>
+        </Container>
+      </section>
+
+      <CtaBand
+        tone="docs"
+        headline="Read the engineering behind the archive."
+        primaryCta={{ label: "Engineering docs", href: "/engineering" }}
+        secondaryCta={{ label: "Journal", href: "/journal" }}
+      />
+    </>
   );
 }
