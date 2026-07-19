@@ -1,0 +1,94 @@
+{
+  "project": "FISAT Rover Website 2026",
+  "local_path": "/home/user/fisat-rover",
+  "notion_hub_page_id": "3a21889e-d299-8138-8273-e1be0a4961df",
+  "notion_hub_url": "https://app.notion.com/p/FISAT-Rover-Website-2026-3a21889ed29981388273e1be0a4961df",
+  "notion_pages": {
+    "Product Requirements Document": {
+      "id": "3a21889e-d299-81a7-9f88-cf6a4663601b",
+      "url": "https://app.notion.com/p/Product-Requirements-Document-3a21889ed29981a79f88cf6a4663601b"
+    },
+    "Architecture": {
+      "id": "3a21889e-d299-8116-bdc4-fcc2d5b86a3c",
+      "url": "https://app.notion.com/p/Architecture-3a21889ed2998116bdc4fcc2d5b86a3c"
+    },
+    "Design System": {
+      "id": "3a21889e-d299-81cb-87ed-e621d702eb64",
+      "url": "https://app.notion.com/p/Design-System-3a21889ed29981cb87ede621d702eb64"
+    },
+    "Component Library": {
+      "id": "3a21889e-d299-81a2-98ef-e1b0324a86c7",
+      "url": "https://app.notion.com/p/Component-Library-3a21889ed29981a298efe1b0324a86c7"
+    },
+    "3D World": {
+      "id": "3a21889e-d299-81b4-9419-cb6c25159de3",
+      "url": "https://app.notion.com/p/3D-World-3a21889ed29981b49419cb6c25159de3"
+    },
+    "Frontend": {
+      "id": "3a21889e-d299-81a9-993d-dad6ea8b0737",
+      "url": "https://app.notion.com/p/Frontend-3a21889ed29981a9993ddad6ea8b0737"
+    },
+    "Backend": {
+      "id": "3a21889e-d299-8153-b8c9-c8eeae1ad6cb",
+      "url": "https://app.notion.com/p/Backend-3a21889ed2998153b8c9c8eeae1ad6cb"
+    },
+    "CMS": {
+      "id": "3a21889e-d299-8161-a9fe-d6269036446a",
+      "url": "https://app.notion.com/p/CMS-3a21889ed2998161a9fed6269036446a"
+    },
+    "Database": {
+      "id": "3a21889e-d299-813b-9454-ecb8d8afda38",
+      "url": "https://app.notion.com/p/Database-3a21889ed299813b9454ecb8d8afda38"
+    },
+    "Roadmap": {
+      "id": "3a21889e-d299-81bd-965e-d44cb3600d17",
+      "url": "https://app.notion.com/p/Roadmap-3a21889ed29981bd965ed44cb3600d17"
+    }
+  },
+  "notion_databases": {
+    "Tasks": {
+      "id": "6726741a-6bf3-4b3f-b971-29b967631584",
+      "url": "https://app.notion.com/p/6726741a6bf34b3fb97129b967631584",
+      "data_source_id": "62435d5b-9c0b-4872-9d2c-fef0eb716b05"
+    },
+    "Bugs": {
+      "id": "58ebbcf1-a5e6-41c1-817a-aaa7b28e8fa5",
+      "url": "https://app.notion.com/p/58ebbcf1a5e641c1817aaaa7b28e8fa5",
+      "data_source_id": "562fb3ed-cde5-4f3b-8cb3-1354a0d90956"
+    },
+    "Changelog": {
+      "id": "b8f8f780-346e-4fff-aef7-699ac441c1b6",
+      "url": "https://app.notion.com/p/b8f8f780346e4fffaef7699ac441c1b6",
+      "data_source_id": "6b6308cd-4c7e-4849-9833-f0032641c165"
+    }
+  },
+  "github_repo": "https://github.com/mohamedafnnan/fisat-rover-2026",
+  "github_owner": "mohamedafnnan",
+  "github_repo_name": "fisat-rover-2026",
+  "github_empty_placeholder_repo": "https://github.com/mohamedafnnan/fisat-rover-website-2026",
+  "gdrive_root_id": "1iILvh6K1LLmcFyoV-is3Yz5MPqlUKo8g",
+  "gdrive_root_url": "https://drive.google.com/drive/folders/1iILvh6K1LLmcFyoV-is3Yz5MPqlUKo8g",
+  "gdrive_folders": {
+    "images": {
+      "id": "1TnZ8rZlvMN1_WrcSGj2q8YqRA7pHmwXg",
+      "url": "https://drive.google.com/drive/folders/1TnZ8rZlvMN1_WrcSGj2q8YqRA7pHmwXg"
+    },
+    "assets": {
+      "id": "1bH7789pIaEk3wtVBJ6_xKtxkgpatE9L2",
+      "url": "https://drive.google.com/drive/folders/1bH7789pIaEk3wtVBJ6_xKtxkgpatE9L2"
+    },
+    "brand": {
+      "id": "1T5Io0UpXdIC08rUixMsq1YGuu5ZjMXA7",
+      "url": "https://drive.google.com/drive/folders/1T5Io0UpXdIC08rUixMsq1YGuu5ZjMXA7"
+    },
+    "3d-models": {
+      "id": "1Kl7cEkZcmfSJy5ppFZWOEH-cDi8NqIoD",
+      "url": "https://drive.google.com/drive/folders/1Kl7cEkZcmfSJy5ppFZWOEH-cDi8NqIoD"
+    },
+    "docs-exports": {
+      "id": "1UVExgJpniHOnFAW_OsoYTBgmH0rq0G9-",
+      "url": "https://drive.google.com/drive/folders/1UVExgJpniHOnFAW_OsoYTBgmH0rq0G9-"
+    }
+  },
+  "rule": "Every future task must update Notion automatically (docs, Tasks, Bugs, Changelog as applicable)."
+}
