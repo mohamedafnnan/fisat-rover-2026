@@ -22,9 +22,7 @@ export const metadata: Metadata = {
   ...buildMetadata(),
   applicationName: siteConfig.name,
   category: "technology",
-  icons: {
-    icon: "/favicon.ico",
-  },
+  // Icons: src/app/icon.tsx + apple-icon.tsx (Next file conventions)
 };
 
 export const viewport: Viewport = {

@@ -18,7 +18,7 @@ export const siteConfig = {
     "Angamaly",
   ],
   links: {
-    github: "https://github.com/fisatrover",
+    github: "https://github.com/mohamedafnnan/fisat-rover-2026",
     instagram: "https://instagram.com/fisatrover",
     linkedin: "https://linkedin.com/company/fisatrover",
     youtube: "https://youtube.com/@fisatrover",

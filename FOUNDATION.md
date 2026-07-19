@@ -1,20 +1,27 @@
 # Foundation Milestone — Complete
 
-**Status:** Production build green · Typecheck green · 36 routes generated  
+**Status:** Production-ready foundation · Verified 2026-07-19  
 **Location:** `/home/user/fisat-rover`  
+**GitHub:** https://github.com/mohamedafnnan/fisat-rover-2026  
 **Archive:** `fisat-rover-foundation.tar.gz`
 
-## Verified
+## Verified (re-run 2026-07-19)
 
 | Check | Result |
 | --- | --- |
 | `tsc --noEmit` | Pass |
-| `next build` | Pass (Next.js 15.5.7) |
-| Shared First Load JS | **102 kB** |
+| `next lint` / ESLint | Pass (0 warnings) |
+| `next build` | Pass (Next.js 15.5.20) |
+| Shared First Load JS | **103 kB** |
 | Marketing pages | **106 kB** first load |
-| `/explore` island | **118 kB** first load (lazy R3F) |
-| Static routes | 30+ prerendered |
+| `/explore` island | **119 kB** first load (lazy R3F) |
+| Routes generated | 35 (static + dynamic shells) |
 | API stubs | contact, apply, newsletter, revalidate, search |
+| World boundary | `/explore` imports only `@/world` public API |
+| Icons | `app/icon.tsx` + `app/apple-icon.tsx` |
+| Theme / fonts | Inter + JetBrains Mono · next-themes class strategy |
+| shadcn/ui | `components.json` new-york · CVA primitives |
+| Tailwind | v4 `@theme inline` + `tokens.css` |
 
 ## Delivered (requirements map)
 

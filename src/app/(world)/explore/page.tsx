@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { buildMetadata } from "@/lib/seo/metadata";
-import { WorldEntry } from "@/world/core/world-entry";
+import { WorldEntry } from "@/world";
 
 export const metadata: Metadata = buildMetadata({
   title: "Base Camp",

@@ -1,7 +1,8 @@
 # FISAT Rover Website 2026
 
-**Status:** Foundation initialized · 2026-07-19  
-**Stack:** Next.js 15 · React 19 · TypeScript · Tailwind v4 · R3F · Payload (planned)
+**Status:** Foundation production-ready · verified 2026-07-19  
+**Stack:** Next.js 15 · React 19 · TypeScript · Tailwind v4 · R3F · Payload (planned)  
+**Build:** typecheck ✅ · lint ✅ · `next build` ✅ (35 routes, ~103 kB shared JS)
 
 ## Workspace links
 

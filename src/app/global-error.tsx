@@ -1,5 +1,10 @@
 "use client";
 
+/**
+ * Root-level error boundary — must define its own <html>/<body>
+ * because the root layout may have failed. Keep styles self-contained
+ * (no theme providers / design-system components available here).
+ */
 export default function GlobalError({
   error,
   reset,
@@ -9,19 +14,73 @@ export default function GlobalError({
 }) {
   return (
     <html lang="en">
-      <body className="bg-neutral-950 text-neutral-50 antialiased">
-        <main className="mx-auto flex min-h-dvh max-w-lg flex-col items-center justify-center gap-4 px-6 text-center">
-          <h1 className="text-2xl font-semibold">Critical error</h1>
-          <p className="text-sm text-neutral-400">
+      <body
+        style={{
+          margin: 0,
+          minHeight: "100dvh",
+          background: "#0a0a0a",
+          color: "#fafafa",
+          fontFamily:
+            'ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif',
+          WebkitFontSmoothing: "antialiased",
+        }}
+      >
+        <main
+          style={{
+            margin: "0 auto",
+            display: "flex",
+            minHeight: "100dvh",
+            maxWidth: "32rem",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+            gap: "1rem",
+            padding: "1.5rem",
+            textAlign: "center",
+          }}
+        >
+          <p
+            style={{
+              margin: 0,
+              fontSize: "0.75rem",
+              letterSpacing: "0.08em",
+              textTransform: "uppercase",
+              color: "#a3a3a3",
+            }}
+          >
+            FISAT Rover
+          </p>
+          <h1 style={{ margin: 0, fontSize: "1.5rem", fontWeight: 600 }}>
+            Critical error
+          </h1>
+          <p style={{ margin: 0, fontSize: "0.875rem", color: "#a3a3a3", lineHeight: 1.5 }}>
             The application failed to load. Please try again.
             {error.digest ? (
-              <span className="mt-2 block font-mono text-xs">Ref: {error.digest}</span>
+              <span
+                style={{
+                  display: "block",
+                  marginTop: "0.5rem",
+                  fontFamily: "ui-monospace, monospace",
+                  fontSize: "0.75rem",
+                }}
+              >
+                Ref: {error.digest}
+              </span>
             ) : null}
           </p>
           <button
             type="button"
             onClick={reset}
-            className="rounded-md bg-sky-600 px-4 py-2 text-sm font-medium text-white hover:bg-sky-500"
+            style={{
+              border: 0,
+              borderRadius: "0.375rem",
+              background: "#0284c7",
+              color: "#fff",
+              fontSize: "0.875rem",
+              fontWeight: 500,
+              padding: "0.5rem 1rem",
+              cursor: "pointer",
+            }}
           >
             Retry
           </button>

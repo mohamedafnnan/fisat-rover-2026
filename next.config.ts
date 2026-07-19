@@ -13,10 +13,26 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "**.fisatrover.in",
       },
+      {
+        protocol: "https",
+        hostname: "drive.google.com",
+      },
+      {
+        protocol: "https",
+        hostname: "lh3.googleusercontent.com",
+      },
     ],
   },
   experimental: {
-    optimizePackageImports: ["lucide-react", "gsap", "@react-three/drei"],
+    optimizePackageImports: [
+      "lucide-react",
+      "gsap",
+      "@react-three/drei",
+      "@radix-ui/react-navigation-menu",
+      "@radix-ui/react-dialog",
+      "@radix-ui/react-dropdown-menu",
+      "@radix-ui/react-accordion",
+    ],
   },
   headers: async () => [
     {
